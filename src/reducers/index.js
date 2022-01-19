@@ -5,6 +5,7 @@ const initialState = {
     category: "misc",
     setup: "Why was the river rich",
     delivery: "becasue it had two banks",
+    type: "twopart",
   },
   isFetching: false,
   error: "",
