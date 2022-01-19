@@ -3,8 +3,8 @@ import { FETCH_START, FETCH_FAIL, FETCH_SUCCESS } from "../actions";
 const initialState = {
   joke: {
     category: "misc",
-    joke: "Why was the river rich",
-    answer: "becasue it had two banks",
+    setup: "Why was the river rich",
+    delivery: "becasue it had two banks",
   },
   isFetching: false,
   error: "",

@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { getJoke } from "../actions";
 
-function MainData({ joke, error, isFetching }) {
+function MainData({ joke, error, isFetching, dispatch }) {
+  useEffect(() => {
+    dispatch(getJoke());
+  }, []);
+
+  const handleChange = () => {
+    dispatch(getJoke());
+  };
   if (error) {
     return <h2>we got an error: {error}</h2>;
   }
@@ -14,10 +22,10 @@ function MainData({ joke, error, isFetching }) {
       <h1>random joke</h1>
       <div className="joke_container">
         <h4>category: {joke.category}</h4>
-        <h4>joke: {joke.joke}</h4>
-        <h4>answer: {joke.answer}</h4>
+        <h4>joke: {joke.setup}</h4>
+        <h4>answer: {joke.delivery}</h4>
       </div>
-      <button>Press for random joke</button>
+      <button onClick={handleChange}>Press for random joke</button>
     </div>
   );
 }
