@@ -11,10 +11,10 @@ export const getJoke = () => {
       .get("https://v2.jokeapi.dev/joke/Any?safe-mode")
       .then((resp) => {
         console.log(resp.data);
-        dispatch({ type: FETCH_SUCCESS, action: resp.data });
+        dispatch({ type: FETCH_SUCCESS, payload: resp.data });
       })
       .catch((err) => {
-        dispatch({ type: FETCH_FAIL, action: err });
+        dispatch({ type: FETCH_FAIL, payload: err });
       });
   };
 };
