@@ -11,6 +11,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         savedJoke: [...state.savedJoke, action.payload],
       };
+
+    case DELETE_JOKE:
+      return {
+        ...state,
+        savedJoke: state.savedJoke.filter((item) => item.id !== action.payload),
+      };
     default:
       return state;
   }
