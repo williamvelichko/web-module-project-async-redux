@@ -24,7 +24,7 @@ function MainData({ joke, error, isFetching, dispatch }) {
   }
 
   const handleSaveJoke = (id) => {
-    dispatch(saveJoke());
+    dispatch(saveJoke(id));
   };
 
   return (
@@ -54,7 +54,7 @@ function MainData({ joke, error, isFetching, dispatch }) {
         </div>
       )}
       <button onClick={handleChange}>Press for random joke</button>
-      <button onClick={() => handleSaveJoke(joke.id)}>Save Joke</button>
+      <button onClick={() => handleSaveJoke(joke)}>Save Joke</button>
     </div>
   );
 }

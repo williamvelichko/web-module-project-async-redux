@@ -5,17 +5,30 @@ function SavedJoke({ savedJoke }) {
   return (
     <div className="savedJoke">
       <h1>Saved jokes:</h1>
-      <div>
-        <h4>
-          <strong>category:</strong> {savedJoke.category}
-        </h4>
-        <h4>
-          <strong>joke:</strong> {savedJoke.setup}
-        </h4>
-        <h4>
-          <strong>answer:</strong> {savedJoke.delivery}
-        </h4>
-      </div>
+      {savedJoke.map((joke) => {
+        return joke.type === "twopart" ? (
+          <div className="savedJoke_container">
+            <h4>
+              <strong>category:</strong> {joke.category}
+            </h4>
+            <h4>
+              <strong>joke:</strong> {joke.setup}
+            </h4>
+            <h4>
+              <strong>answer:</strong> {joke.delivery}
+            </h4>
+          </div>
+        ) : (
+          <div className="savedJoke_container">
+            <h4>
+              <strong>category:</strong> {joke.category}
+            </h4>
+            <h4>
+              <strong>joke:</strong> {joke.joke}
+            </h4>
+          </div>
+        );
+      })}
     </div>
   );
 }
