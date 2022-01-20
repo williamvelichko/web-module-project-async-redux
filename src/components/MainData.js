@@ -1,8 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+//import { useParams } from "react-router-dom";
 import { getJoke } from "../actions";
+import { saveJoke } from "../actions/savedJokes";
 
 function MainData({ joke, error, isFetching, dispatch }) {
+  //const { id } = useParams();
+
+  //const savedJoke = joke.find((joke) => joke.id === Number(id));
+
   useEffect(() => {
     dispatch(getJoke());
   }, []);
@@ -16,9 +22,10 @@ function MainData({ joke, error, isFetching, dispatch }) {
   if (isFetching) {
     return <h2 className="fetching">Fetching A Joke For You!</h2>;
   }
-  //   if (joke.type === "twopart") {
-  //     return <h2>twopart joke</h2>;
-  //   }
+
+  const handleSaveJoke = (id) => {
+    dispatch(saveJoke());
+  };
 
   return (
     <div className="main_container">
@@ -47,15 +54,15 @@ function MainData({ joke, error, isFetching, dispatch }) {
         </div>
       )}
       <button onClick={handleChange}>Press for random joke</button>
-      <button>Save Joke</button>
+      <button onClick={() => handleSaveJoke(joke.id)}>Save Joke</button>
     </div>
   );
 }
 const mapStateToProps = (state) => {
   return {
-    joke: state.joke,
-    isFetching: state.isFetching,
-    error: state.error,
+    joke: state.jokes.joke,
+    isFetching: state.jokes.isFetching,
+    error: state.jokes.error,
   };
 };
 
